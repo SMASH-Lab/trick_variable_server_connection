@@ -1,0 +1,39 @@
+\hypertarget{test02__set__multiple__readings_8c}{}\section{test/test02\+\_\+set\+\_\+multiple\+\_\+readings.c File Reference}
+\label{test02__set__multiple__readings_8c}\index{test/test02\+\_\+set\+\_\+multiple\+\_\+readings.\+c@{test/test02\+\_\+set\+\_\+multiple\+\_\+readings.\+c}}
+
+
+This is a simple test that shows how to connect and interact to a Trick Variable Server for querying and reading simulation data until they are provided by the Server. The source simulation is the S\+I\+M\+\_\+cannon\+\_\+jet reported in the Trick Tutorial \char`\"{}\+Trick Simulation Environment User Training Materials Trick 2013.\+0 Release\char`\"{}, see Section 9.\+0 and subsequent. The program takes as first input parameter the port number on which the Trick Variable Server is active. The server is supposed to run locally. If not, the IP address must be provided after the port number as the second input parameter.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}../include/trick\+\_\+variable\+\_\+server\+\_\+connection.\+h\char`\"{}}\\*
+Include dependency graph for test02\+\_\+set\+\_\+multiple\+\_\+readings.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test02__set__multiple__readings_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries main} (int narg, char $\ast$$\ast$args)\hypertarget{test02__set__multiple__readings_8c_a8bc81d4e8cd0819680a03b135b7d6c4b}{}\label{test02__set__multiple__readings_8c_a8bc81d4e8cd0819680a03b135b7d6c4b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is a simple test that shows how to connect and interact to a Trick Variable Server for querying and reading simulation data until they are provided by the Server. The source simulation is the S\+I\+M\+\_\+cannon\+\_\+jet reported in the Trick Tutorial \char`\"{}\+Trick Simulation Environment User Training Materials Trick 2013.\+0 Release\char`\"{}, see Section 9.\+0 and subsequent. The program takes as first input parameter the port number on which the Trick Variable Server is active. The server is supposed to run locally. If not, the IP address must be provided after the port number as the second input parameter. 
+
+\begin{DoxyAuthor}{Author}
+Alfredo Garro, University of Calabria (Italy), \href{mailto:alfredo.garro@unical.it}{\tt alfredo.\+garro@unical.\+it} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+29 June 2016 
+\end{DoxyDate}
+\begin{DoxySeeAlso}{See also}
+\href{https://github.com/nasa/Trick/wiki/Variable-Server}{\tt https\+://github.\+com/nasa/\+Trick/wiki/\+Variable-\/\+Server} for the documentation on the commands that can be sent to the Trick Variable Server. 
+\end{DoxySeeAlso}
