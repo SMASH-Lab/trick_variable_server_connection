@@ -129,7 +129,7 @@ int send_command_to_variable_server(int socket, char* command) {
 	}
 	else {
 		strncpy(cmd, command, sizeof(cmd));
-		strncat(cmd, "\n", (sizeof(cmd) - strlen(cmd))); 
+		strncat(cmd, "\n", (sizeof(cmd) - strlen(cmd)-1)); 
 		return send(socket , cmd , strlen(cmd) , 0);
 	}
 }
@@ -286,8 +286,8 @@ int add_variable_to_server(int socket, char* variable_name) {
 	}
 	else {
 		strncpy(cmd, prefix, sizeof(cmd));
-		strncat(cmd, variable_name, (sizeof(cmd) - strlen(cmd)));
-                strncat(cmd, suffix, (sizeof(cmd) - strlen(cmd)));
+		strncat(cmd, variable_name, (sizeof(cmd) - strlen(cmd)-1));
+                strncat(cmd, suffix, (sizeof(cmd) - strlen(cmd)-1));
 		if (send_command_to_variable_server(socket,cmd)<0) {
 			return -1;
 		}
@@ -325,10 +325,10 @@ int add_variable_to_sever_with_units(int socket, char* variable_name, char* unit
 	}
 	else {
 		strncpy(cmd, prefix, sizeof(cmd));
-		strncat(cmd, variable_name, (sizeof(cmd) - strlen(cmd)));
-		strncat(cmd, infix, (sizeof(cmd) - strlen(cmd)));
-		strncat(cmd, units, (sizeof(cmd) - strlen(cmd)));
-                strncat(cmd, suffix, (sizeof(cmd) - strlen(cmd)));
+		strncat(cmd, variable_name, (sizeof(cmd) - strlen(cmd)-1));
+		strncat(cmd, infix, (sizeof(cmd) - strlen(cmd)-1));
+		strncat(cmd, units, (sizeof(cmd) - strlen(cmd)-1));
+                strncat(cmd, suffix, (sizeof(cmd) - strlen(cmd)-1));
 		if (send_command_to_variable_server(socket,cmd)<0) {
 			return -1;
 		}
@@ -363,8 +363,8 @@ int remove_variable_from_server(int socket, char* variable_name) {
 	}
 	else {
 		strncpy(cmd, prefix, sizeof(cmd));
-		strncat(cmd, variable_name, (sizeof(cmd) - strlen(cmd)));
-                strncat(cmd, suffix, (sizeof(cmd) - strlen(cmd)));
+		strncat(cmd, variable_name, (sizeof(cmd) - strlen(cmd)-1));
+                strncat(cmd, suffix, (sizeof(cmd) - strlen(cmd)-1));
 		if (send_command_to_variable_server(socket,cmd)<0) {
 			return -1;
 		}
@@ -422,8 +422,8 @@ int set_cycle(int socket, double period) {
 	}
 	else {
 		strncpy(cmd, prefix, sizeof(cmd));
-		strncat(cmd, per, (sizeof(cmd) - strlen(cmd)));
-                strncat(cmd, suffix, (sizeof(cmd) - strlen(cmd)));
+		strncat(cmd, per, (sizeof(cmd) - strlen(cmd)-1));
+                strncat(cmd, suffix, (sizeof(cmd) - strlen(cmd)-1));
 		if (send_command_to_variable_server(socket,cmd)<0) {
 			return -1;
 		}
@@ -462,8 +462,8 @@ int set_copy_mode(int socket, int mode) {
 	}
 	else {
 		strncpy(cmd, prefix, sizeof(cmd));
-		strncat(cmd, mod, (sizeof(cmd) - strlen(cmd)));
-                strncat(cmd, suffix, (sizeof(cmd) - strlen(cmd)));
+		strncat(cmd, mod, (sizeof(cmd) - strlen(cmd)-1));
+                strncat(cmd, suffix, (sizeof(cmd) - strlen(cmd)-1));
 		if (send_command_to_variable_server(socket,cmd)<0) {
 			return -1;
 		}
@@ -586,8 +586,8 @@ int set_validate_addresses(int socket, int validate) {
 	}
 	else {
 		strncpy(cmd, prefix, sizeof(cmd));
-		strncat(cmd, val, (sizeof(cmd) - strlen(cmd)));
-                strncat(cmd, suffix, (sizeof(cmd) - strlen(cmd)));
+		strncat(cmd, val, (sizeof(cmd) - strlen(cmd)-1));
+                strncat(cmd, suffix, (sizeof(cmd) - strlen(cmd)-1));
 		if (send_command_to_variable_server(socket,cmd)<0) {
 			return -1;
 		}
@@ -625,8 +625,8 @@ int set_real_time(int socket, int enabled) {
 	}
 	else {
 		strncpy(cmd, prefix, sizeof(cmd));
-		strncat(cmd, enab, (sizeof(cmd) - strlen(cmd)));
-                strncat(cmd, suffix, (sizeof(cmd) - strlen(cmd)));
+		strncat(cmd, enab, (sizeof(cmd) - strlen(cmd)-1));
+                strncat(cmd, suffix, (sizeof(cmd) - strlen(cmd)-1));
 		if (send_command_to_variable_server(socket,cmd)<0) {
 			return -1;
 		}
@@ -664,8 +664,8 @@ int set_debug_level(int socket, int level) {
 	}
 	else {
 		strncpy(cmd, prefix, sizeof(cmd));
-		strncat(cmd, lev, (sizeof(cmd) - strlen(cmd)));
-                strncat(cmd, suffix, (sizeof(cmd) - strlen(cmd)));
+		strncat(cmd, lev, (sizeof(cmd) - strlen(cmd)-1));
+                strncat(cmd, suffix, (sizeof(cmd) - strlen(cmd)-1));
 		if (send_command_to_variable_server(socket,cmd)<0) {
 			return -1;
 		}
@@ -700,8 +700,8 @@ int set_client_tag(int socket, char* tag) {
 	}
 	else {
 		strncpy(cmd, prefix, sizeof(cmd));
-		strncat(cmd, tag, (sizeof(cmd) - strlen(cmd)));
-                strncat(cmd, suffix, (sizeof(cmd) - strlen(cmd)));
+		strncat(cmd, tag, (sizeof(cmd) - strlen(cmd)-1));
+                strncat(cmd, suffix, (sizeof(cmd) - strlen(cmd)-1));
 		if (send_command_to_variable_server(socket,cmd)<0) {
 			return -1;
 		}
