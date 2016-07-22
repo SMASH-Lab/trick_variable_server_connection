@@ -122,7 +122,7 @@ int connect_to_variable_server(int socket, char* host, int port) {
  */
 
 int send_command_to_variable_server(int socket, char* command) {
-        char cmd[128];
+        char cmd[512];
 
 	if (sizeof(cmd)<strlen(command)+2) {
 		return -1;	
@@ -277,9 +277,9 @@ int unpause(int socket) {
 int add_variable_to_server(int socket, char* variable_name) {
 
 
-	char  cmd[256];
-        char* prefix="trick.var_add(\"";
-        char* suffix="\")"; 
+	char  cmd[512];
+        const char* prefix="trick.var_add(\"";
+        const char* suffix="\")"; 
 
 	if (sizeof(cmd)<(strlen(prefix)+strlen(variable_name)+strlen(suffix)+1)) {
 		return -1;	
@@ -315,10 +315,10 @@ int add_variable_to_server(int socket, char* variable_name) {
 int add_variable_to_sever_with_units(int socket, char* variable_name, char* units) {
 
 
-	char  cmd[256];
-        char* prefix="trick.var_add(\"";
-	char* infix="\", \"";
-        char* suffix="\")"; 
+	char  cmd[512];
+        const char* prefix="trick.var_add(\"";
+	const char* infix="\", \"";
+        const char* suffix="\")"; 
 
 	if (sizeof(cmd)<(strlen(prefix)+strlen(variable_name)+strlen(infix)+strlen(units)+strlen(suffix)+1)) {
 		return -1;	
@@ -354,9 +354,9 @@ int add_variable_to_sever_with_units(int socket, char* variable_name, char* unit
 int remove_variable_from_server(int socket, char* variable_name) {
 
 
-	char  cmd[256];
-        char* prefix="trick.var_remove(\"";
-        char* suffix="\")"; 
+	char  cmd[512];
+        const char* prefix="trick.var_remove(\"";
+        const char* suffix="\")"; 
 
 	if (sizeof(cmd)<(strlen(prefix)+strlen(variable_name)+strlen(suffix)+1)) {
 		return -1;	
@@ -410,12 +410,12 @@ int clear(int socket) {
 
 int set_cycle(int socket, double period) {
 	
-	char  cmd[256];
-	char* prefix="trick.var_cycle(";
-	char  per[50];
-	char* suffix=")"; 
+	char  cmd[512];
+	const char* prefix="trick.var_cycle(";
+	char  per[128];
+	const char* suffix=")"; 
 
-	snprintf(per, 50, "%lf", period);	
+	snprintf(per, 128, "%lf", period);	
 	
 	if (sizeof(cmd)<(strlen(prefix)+strlen(per)+strlen(suffix)+1)) {
 		return -1;	
@@ -450,10 +450,10 @@ int set_cycle(int socket, double period) {
 
 int set_copy_mode(int socket, int mode) {
 	
-	char  cmd[256];
-	char* prefix="trick.var_set_copy_mode(";
+	char  cmd[512];
+	const char* prefix="trick.var_set_copy_mode(";
 	char  mod[4];
-	char* suffix=")"; 
+	const char* suffix=")"; 
 
 	snprintf(mod, 4, "%i", mode);	
 	
@@ -574,12 +574,12 @@ int close(int socket) {
 
 int set_validate_addresses(int socket, int validate) {
 	
-	char  cmd[128];
-	char* prefix="trick.var_validate_address(";
-	char  val[10];
-	char* suffix=")"; 
+	char  cmd[256];
+	const char* prefix="trick.var_validate_address(";
+	char  val[16];
+	const char* suffix=")"; 
 
-	if (validate>0) strncpy(val, "True", 10); else strncpy(val, "False", 10);
+	if (validate>0) strncpy(val, "True", 16); else strncpy(val, "False", 16);
 	
 	if (sizeof(cmd)<(strlen(prefix)+strlen(val)+strlen(suffix)+1)) {
 		return -1;	
@@ -613,12 +613,12 @@ int set_validate_addresses(int socket, int validate) {
 
 int set_real_time(int socket, int enabled) {
 	
-	char  cmd[128];
-	char* prefix="trick.real_time_";
-	char  enab[10];
-	char* suffix="()"; 
+	char  cmd[256];
+	const char* prefix="trick.real_time_";
+	char  enab[16];
+	const char* suffix="()"; 
 
-	if (enabled>0) strncpy(enab, "enable", 10); else strncpy(enab, "disable", 10);	
+	if (enabled>0) strncpy(enab, "enable", 16); else strncpy(enab, "disable", 16);	
 	
 	if (sizeof(cmd)<(strlen(prefix)+strlen(enab)+strlen(suffix)+1)) {
 		return -1;	
@@ -653,11 +653,11 @@ int set_real_time(int socket, int enabled) {
 int set_debug_level(int socket, int level) {
 	
 	char  cmd[256];
-	char* prefix="trick.var_debug(";
-	char  lev[20];
-	char* suffix=")"; 
+	const char* prefix="trick.var_debug(";
+	char  lev[64];
+	const char* suffix=")"; 
 
-	snprintf(lev, 20, "%i", level);	
+	snprintf(lev, 64, "%i", level);	
 	
 	if (sizeof(cmd)<(strlen(prefix)+strlen(lev)+strlen(suffix)+1)) {
 		return -1;	
@@ -691,9 +691,9 @@ int set_debug_level(int socket, int level) {
 
 int set_client_tag(int socket, char* tag) {
 
-	char  cmd[256];
-        char* prefix="trick.var_set_client_tag(\"";
-        char* suffix="\")"; 
+	char  cmd[512];
+        const char* prefix="trick.var_set_client_tag(\"";
+        const char* suffix="\")"; 
 
 	if (sizeof(cmd)<(strlen(prefix)+strlen(tag)+strlen(suffix)+1)) {
 		return -1;	
