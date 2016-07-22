@@ -60,7 +60,7 @@ int main (int narg, char** args)
 	printf("Host = %s\n", host );
 	printf("SeverPort = %i\n", port);
 
-    	char *message , server_reply[2000];
+    	char server_reply[2000];
      
     	//Create a default socket
     	socket_desc = create_default_socket();
